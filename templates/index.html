@@ -85,21 +85,6 @@
       document.getElementById('loading').style.display = 'block';
       document.getElementById('uploadForm').style.display = 'none';
     }
-
-    function checkStatus() {
-      console.log("Started")
-      fetch('/status')
-        .then(response => response.json())
-        .then(data => {
-          document.getElementById('status').textContent = data.status;
-        })
-        .catch(error => console.error('Error fetching status:', error));
-    }
-
-    function startPolling() {
-      checkStatus();  
-      setInterval(checkStatus, 5000);  
-    }
   </script>
   <nav class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
     <div class="container-fluid">
@@ -163,9 +148,6 @@
       {% endif %}
     </div>
   </div>
-  <div id="status">Processing status will appear here</div>
-
-
 
   <div class="container" id="try">
     <footer class="py-3 my-4">
@@ -174,10 +156,6 @@
       <p class="text-center text-body-secondary foot">&copy; Akshat Miglani: TagGenie</p>
     </footer>
   </div>
-
-  <script>
-    startPolling();
-  </script>
 </body>
 
 </html>

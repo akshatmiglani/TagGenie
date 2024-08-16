@@ -102,12 +102,6 @@ def generate_tags_chat(prompt_text):
         logging.error(f"Error generating tags: {e}")
         return f"Error generating tags: {e}"
     
-@app.route('/status')
-def status():
-    """Provides the current status of the file processing."""
-    status = session.get('status', 'Processing not started')
-    return jsonify({'status': status})
-
 @app.route('/')
 def index():
     """Renders the main page."""
@@ -138,13 +132,13 @@ def upload_file():
             file.save(video_path)
             logging.info(f"File uploaded: {file.filename}")
 
-            session['status'] = 'Converting video to audio...'
+            
             video_to_audio(video_path, audio_path)
 
-            session['status'] = 'Converting audio to text...'
+            
             audio_to_text(audio_path)
 
-            session['status'] = 'Generating tags...'
+            
             transcribed_text = read_text_from_file("result/transcribe.txt")
             tags_response = generate_tags_chat(transcribed_text)
             print(tags_response)
@@ -154,11 +148,11 @@ def upload_file():
                 f.write(response_message)
 
             logging.info("File processing completed successfully")
-            session['status'] = 'File processing completed successfully'
+           
             return render_template('index.html', result=response_message)
         except Exception as e:
 
-            session['status'] = f"Error processing file: {e}"
+
             return render_template('index.html', result=f"Error processing file: {e}")
 
 if __name__ == '__main__':
