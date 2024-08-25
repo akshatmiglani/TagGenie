@@ -1,5 +1,8 @@
 # Flask Video to Text Application
 
+# Flowchart
+![Flowchart](image.png)
+
 This Flask application converts a video file to text and generates tags based on the extracted text. It uses MoviePy to extract audio from the video, Whisper for speech-to-text transcription, and Gemini API for generating tags.
 
 ## Overview
