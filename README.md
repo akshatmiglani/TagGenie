@@ -1,6 +1,6 @@
 # Flask Video to Text Application
 
-#Explanation Video
+# Explanation Video
 https://youtu.be/SDG8TWBiLbc?si=E0YTwIlI5t0L-kOw
 
 # Flowchart
